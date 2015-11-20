@@ -18,6 +18,8 @@
 		11A926091BEBF6F9003734EE /* Cat.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11A926081BEBF6F9003734EE /* Cat.sks */; };
 		2D0E8A081BF23FBC00E1CA53 /* CatCurl.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E8A071BF23FBC00E1CA53 /* CatCurl.sks */; };
 		2D0E8A0A1BF2405D00E1CA53 /* CatWakeup.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E8A091BF2405D00E1CA53 /* CatWakeup.sks */; };
+		2D99C8DB1BF67DB6007652BD /* BedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99C8DA1BF67DB6007652BD /* BedNode.swift */; };
+		2D99C8DD1BF68031007652BD /* CatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99C8DC1BF68031007652BD /* CatNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		11A926081BEBF6F9003734EE /* Cat.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat.sks; sourceTree = "<group>"; };
 		2D0E8A071BF23FBC00E1CA53 /* CatCurl.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CatCurl.sks; path = catnap/CatCurl.sks; sourceTree = SOURCE_ROOT; };
 		2D0E8A091BF2405D00E1CA53 /* CatWakeup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatWakeup.sks; sourceTree = "<group>"; };
+		2D99C8DA1BF67DB6007652BD /* BedNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BedNode.swift; path = catnap/BedNode.swift; sourceTree = SOURCE_ROOT; usesTabs = 1; };
+		2D99C8DC1BF68031007652BD /* CatNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				11A926051BEBF3DC003734EE /* Sounds */,
 				11A925EF1BEBF2B2003734EE /* AppDelegate.swift */,
 				11A925F31BEBF2B2003734EE /* GameScene.swift */,
+				2D99C8DA1BF67DB6007652BD /* BedNode.swift */,
+				2D99C8DC1BF68031007652BD /* CatNode.swift */,
 				11A925F51BEBF2B2003734EE /* GameViewController.swift */,
 				11A925F71BEBF2B2003734EE /* Main.storyboard */,
 				11A925FA1BEBF2B2003734EE /* Assets.xcassets */,
@@ -167,6 +173,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A925F41BEBF2B2003734EE /* GameScene.swift in Sources */,
+				2D99C8DD1BF68031007652BD /* CatNode.swift in Sources */,
+				2D99C8DB1BF67DB6007652BD /* BedNode.swift in Sources */,
 				11A925F61BEBF2B2003734EE /* GameViewController.swift in Sources */,
 				11A925F01BEBF2B2003734EE /* AppDelegate.swift in Sources */,
 			);
