@@ -8,38 +8,46 @@
 
 import SpriteKit
 
+protocol CustomNodeEvents {
+    func didMoveToScene()
+}
+protocol InteractiveNode {
+    func interact()
+}
+
+var bedNode: BedNode!
+var catNode: CatNode!
+
+struct PhysicsCategory {
+    static let None:  UInt32 = 0
+    static let Cat:   UInt32 = 0b1 // 1
+    static let Block: UInt32 = 0b10 // 2
+    static let Bed:   UInt32 = 0b100 // 4
+}
+
+
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 45;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
-    }
+    // Calculate playable margin
+    let maxAspectRatio: CGFloat = 16.0/9.0 // iPhone 5
+    let maxAspectRatioHeight = size.width / maxAspectRatio
+    let playableMargin: CGFloat = (size.height - maxAspectRatioHeight)/2
+    let playableRect = CGRect(x: 0, y: playableMargin,
+    width: size.width, height: size.height-playableMargin*2)
+    physicsBody = SKPhysicsBody(edgeLoopFromRect: playableRect)
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
+    enumerateChildNodesWithName("//*", usingBlock: {node, _ in
+        if let customNode = node as? CustomNodeEvents {
+        customNode.didMoveToScene()
         }
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        })
+    
+    bedNode = childNodeWithName("bed") as! BedNode
+    catNode = childNodeWithName("//cat_body") as! CatNode
+    
+    //Playing Background Music
+    //SKTAudio.sharedInstance().playBackgroundMusic("backgroundMusic.mp3")
+    
+    
     }
 }
