@@ -2,8 +2,8 @@
 //  GameViewController.swift
 //  CatNap
 //
-//  Created by Johannes Boehm on 05.11.15.
-//  Copyright (c) 2015 Johannes Boehm. All rights reserved.
+//  Created by Marin Todorov on 10/17/15.
+//  Copyright (c) 2015 Razeware LLC. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,6 @@ class GameViewController: UIViewController {
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
-            skView.showsPhysics = true
             skView.showsFPS = true
             skView.showsNodeCount = true
             

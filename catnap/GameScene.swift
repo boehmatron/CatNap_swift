@@ -2,39 +2,44 @@
 //  GameScene.swift
 //  CatNap
 //
-//  Created by Johannes Boehm on 05.11.15.
-//  Copyright (c) 2015 Johannes Boehm. All rights reserved.
+//  Created by Marin Todorov on 10/17/15.
+//  Copyright (c) 2015 Razeware LLC. All rights reserved.
 //
 
 import SpriteKit
 
-var bedNode: BedNode!
-var catNode: CatNode!
-
-protocol CustomNodeEvents {
-    func didMoveToScene()
-}
-
 class GameScene: SKScene {
-        override func didMoveToView(view: SKView) {
-            // Calculate playable margin
-            let maxAspectRatio: CGFloat = 16.0/9.0 // iPhone 5
-            let maxAspectRatioHeight = size.width / maxAspectRatio
-            let playableMargin: CGFloat = (size.height - maxAspectRatioHeight)/2
-            let playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: size.height-playableMargin*2)
-            physicsBody = SKPhysicsBody(edgeLoopFromRect: playableRect)
+    override func didMoveToView(view: SKView) {
+        /* Setup your scene here */
+        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        myLabel.text = "Hello, World!";
+        myLabel.fontSize = 45;
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-            enumerateChildNodesWithName("//*", usingBlock: {node, _ in
-                if let customNode = node as? CustomNodeEvents {
-                    customNode.didMoveToScene()
-                }
-            })
+        self.addChild(myLabel)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+       /* Called when a touch begins */
         
-        bedNode = childNodeWithName("bed") as! BedNode
-        catNode = childNodeWithName("//cat_body") as! CatNode
-        
-        bedNode.setScale(1.5)
-        catNode.setScale(1.5)
-        
+        for touch in touches {
+            let location = touch.locationInNode(self)
+            
+            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            
+            sprite.xScale = 0.5
+            sprite.yScale = 0.5
+            sprite.position = location
+            
+            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
+            
+            sprite.runAction(SKAction.repeatActionForever(action))
+            
+            self.addChild(sprite)
         }
+    }
+   
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+    }
 }
